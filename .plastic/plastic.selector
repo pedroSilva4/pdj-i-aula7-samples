@@ -1,0 +1,4 @@
+repository "Aula7/Aula7@942488@cloud"
+  path "/"
+    br "/main"
+    co "/main"
