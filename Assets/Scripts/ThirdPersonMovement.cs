@@ -3,12 +3,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerStats))]
 public class ThirdPersonMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed = 5f;
-    [SerializeField] private float JumpForce = 4f;
-    [SerializeField] private float Gravity = -9.81f;
-    [SerializeField] private float RotationSpeed = 10f;
+
+
+    [SerializeField] private float Gravity  = -9.81f;
+    private PlayerStats Stats;
+
+
     [SerializeField] private Transform CameraTransform;
 
     private CharacterController _CharacterController;
@@ -18,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Start()
     {
         _CharacterController = GetComponent<CharacterController>();
+        Stats = GetComponent<PlayerStats>();
 
         if (CameraTransform == null && Camera.main != null)
             CameraTransform = Camera.main.transform;
@@ -63,11 +67,11 @@ public class ThirdPersonMovement : MonoBehaviour
             if (input.z >= 0)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Stats.RotationSpeed * Time.deltaTime);
             }
         }
 
-        Vector3 velocity = moveDirection * Speed;
+        Vector3 velocity = moveDirection * Stats.Speed;
         velocity.y = _VerticalVelocity;
         _CharacterController.Move(velocity * Time.deltaTime);
     }
@@ -80,6 +84,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public void OnJump(InputValue value)
     {
         if (_CharacterController.isGrounded)
-            _VerticalVelocity = JumpForce;
+            _VerticalVelocity = Stats.JumpForce;
     }
 }

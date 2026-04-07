@@ -2398,6 +2398,7 @@ GameObject:
   - component: {fileID: 647606153}
   - component: {fileID: 647606158}
   - component: {fileID: 647606159}
+  - component: {fileID: 647606160}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -2568,11 +2569,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2508084d940b41598a7fbc191edb173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonMovement
-  Speed: 5
-  JumpForce: 4
   Gravity: -9.81
-  RotationSpeed: 10
-  CameraTransform: {fileID: 0}
+  CameraTransform: {fileID: 1164591525}
+--- !u!114 &647606160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647606152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f886e8ff0c4884ef79d7fadae501963d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  baseSpeed: 5
+  baseJumpForce: 4
+  baseRotationSpeed: 10
 --- !u!43 &655375174
 Mesh:
   m_ObjectHideFlags: 0
